@@ -40,10 +40,11 @@ public class TimedImage {
 	
 	
 	public boolean showImage() {
-		
+
 		if(!isShown) {
 			label.setImage(image);
 			label.setBounds(40, 38, 400, 280);
+			label.redraw();
 			start = System.currentTimeMillis(); 
 			isShown = true;
 			return true;

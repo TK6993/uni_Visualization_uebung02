@@ -83,6 +83,7 @@ public class ImageShow {
 	}
 	
 	public void setToNextInfoImage() {
+		getcurrentInfoImage().resetImage();
 		infoImageindex++;
 		System.out.print(infoImageindex);
 		if(infoImageindex >= infoImages.size()) {
@@ -93,6 +94,7 @@ public class ImageShow {
 	}
 	
 	public void setToNextImage() {
+		getcurrentImage().resetImage();
 		imageindex++;
 		testactive = false;
 
@@ -100,7 +102,7 @@ public class ImageShow {
 	
 	public void setCurrentTest(boolean testresult) {
 		perceptionResults[imageindex] = testresult;
-		System.out.print(testresult);
+		//System.out.print(testresult);
 	}
 	
 	
@@ -159,14 +161,12 @@ public class ImageShow {
 			if(program.testactive) {
 				boolean currentTestImageIsShown = program.getcurrentImage().showImage();
 				if(!currentTestImageIsShown) {
-					program.getcurrentImage().resetImage();
 					program.setToNextImage();
 				}
 			}
 			else {
 				boolean currentInfoImageIsShown = program.getcurrentInfoImage().showImage();
 				if(!currentInfoImageIsShown) {
-					program.getcurrentInfoImage().resetImage();
 					program.setToNextInfoImage();
 				}
 			}
