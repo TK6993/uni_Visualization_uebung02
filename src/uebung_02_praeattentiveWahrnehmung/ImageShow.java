@@ -30,6 +30,17 @@ public class ImageShow {
 	public  ArrayList<TimedImage> perceptionImages;
 	private int imageindex;
 	private boolean[] perceptionResults;
+	private float[] milisecondsToShow = new float[]{150,400,1000,2500};
+	private int secondsIndex = 0;
+
+	
+	private Button[] buttons;
+	
+	public void  setButtons(Button[] buttons) {
+		this.buttons = buttons;
+
+	}
+	
 	
 	
 	public ImageShow(Display display, Label label) {
@@ -40,15 +51,15 @@ public class ImageShow {
 		this.imageindex = 0;
 		this.infoImageindex =0;
 		createImages(this.display, this.label );
-		perceptionResults = new boolean[perceptionImages.size()-1];
+		perceptionResults = new boolean[perceptionImages.size()];
 	}
 	
 	
 	
 	public  void createImages(Display display, Label label) {
-		TimedImage a = new TimedImage(display, label, 1500f, "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\sample.png");
-		TimedImage b = new TimedImage(display, label, 1000f, "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\visualization.png");
-		TimedImage c = new TimedImage(display, label, 2500f, "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\infographic.png");
+		TimedImage a = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\sample.png");
+		TimedImage b = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\visualization.png");
+		TimedImage c = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\infographic.png");
 
 		
 		
@@ -62,6 +73,8 @@ public class ImageShow {
 		perceptionImages.add(b);
 		perceptionImages.add(c);
 		
+	
+		
 		infoImages.add(three);
 		infoImages.add(two);
 		infoImages.add(one);
@@ -71,6 +84,8 @@ public class ImageShow {
 
 		
 	}
+	
+	
 	
 	public TimedImage getcurrentImage() {
 		 TimedImage toReturn = perceptionImages.get(imageindex);
@@ -96,7 +111,17 @@ public class ImageShow {
 	public void setToNextImage() {
 		getcurrentImage().resetImage();
 		imageindex++;
+		if(imageindex >= perceptionImages.size()) {
+			imageindex= 0;		
+			secondsIndex++;
+
+			
+		}
+		
 		testactive = false;
+		buttons[0].setVisible(true);
+		buttons[1].setVisible(true);
+
 
 	}
 	
@@ -123,7 +148,10 @@ public class ImageShow {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				program.setCurrentTest(true);
-				program.setToNextImage();
+				program.buttons[0].setVisible(false);
+				program.buttons[1].setVisible(false);
+				program.buttons[2].setVisible(true);
+
 			}
 		});
 		btnSawIt.setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN));
@@ -135,7 +163,9 @@ public class ImageShow {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				program.setCurrentTest(false);
-				program.setToNextImage();
+				program.buttons[0].setVisible(false);
+				program.buttons[1].setVisible(false);
+				program.buttons[2].setVisible(true);
 			}
 		});
 		btnNoChance.setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_RED));
@@ -147,10 +177,16 @@ public class ImageShow {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				program.setToNextInfoImage();
+				program.buttons[2].setVisible(false);
 			}
 		});
 		btnNextPerception.setBounds(185, 350, 136, 35);
 		btnNextPerception.setText("Next Perception");
+		
+		Button[] buttons = new Button[] {btnSawIt,btnNoChance,btnNextPerception};
+		buttons[0].setVisible(false);
+		buttons[1].setVisible(false);
+		program.setButtons(buttons);
 		
 
 		shell.open();
@@ -159,6 +195,7 @@ public class ImageShow {
 			
 			
 			if(program.testactive) {
+				program.getcurrentImage().setShowDuration(program.milisecondsToShow[program.secondsIndex]);
 				boolean currentTestImageIsShown = program.getcurrentImage().showImage();
 				if(!currentTestImageIsShown) {
 					program.setToNextImage();
