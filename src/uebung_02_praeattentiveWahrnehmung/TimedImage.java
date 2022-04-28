@@ -28,29 +28,39 @@ public class TimedImage {
 		
 	}
 	
+	public void resetImage() {
+		isShown= false;
+		elapsedTime = 0;
+		start = 0;
+	}
+	
+	public void setShowDuration(float newDuration) {
+		timeToShow = newDuration;
+	}
 	
 	
-	public void showImage() {
+	public boolean showImage() {
 		
 		if(!isShown) {
 			label.setImage(image);
 			label.setBounds(40, 38, 400, 280);
 			start = System.currentTimeMillis(); 
 			isShown = true;
-		 }
-		
-		if(elapsedTime< timeToShow) {
+			return true;
+		 	}
+		else if(elapsedTime< timeToShow) {
 			long finish = System.currentTimeMillis();
-			elapsedTime = finish - start;
-			 
-		}
+			elapsedTime = finish - start;	
+			return true;
+		 	}
 		else {
-			
+			//If this Image has a timeToShow it will be set to null because the time is up
 			if(timeToShow >= 0) { 
 				label.setImage(null);
 				label.setBounds(40, 38, 400, 280);
-				System.out.print("vorbei");
+				return false;
 			}
+			return true;
 		}
 	}
 	
