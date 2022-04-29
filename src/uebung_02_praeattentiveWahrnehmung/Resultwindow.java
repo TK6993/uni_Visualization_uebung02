@@ -66,7 +66,7 @@ public class Resultwindow {
 		
 		
 		TableColumn tblclmnNewColumn = new TableColumn(table, SWT.NONE);
-		tblclmnNewColumn.setWidth(142);
+		tblclmnNewColumn.setWidth(254);
 		tblclmnNewColumn.setText("Eigenschaften");
 		
 		TableColumn tblclmnNewColumn_1 = new TableColumn(table, SWT.NONE);
@@ -79,42 +79,42 @@ public class Resultwindow {
 		
 		
 		TableItem tableItem = new TableItem(table, SWT.NONE);
-		tableItem.setText("New TableItem");
+		tableItem.setText("Small hue");
 		
 		TableItem tableItem_1 = new TableItem(table, SWT.NONE);
-		tableItem_1.setText("New TableItem");
+		tableItem_1.setText("Hue distractors stage 1");
 		
 		TableItem tableItem_2 = new TableItem(table, SWT.NONE);
-		tableItem_2.setText("New TableItem");
+		tableItem_2.setText("Hue distractors stage 2");
 		
 		TableCursor tableCursor = new TableCursor(table, SWT.NONE);
 		
 		TableItem tableItem_3 = new TableItem(table, SWT.NONE);
-		tableItem_3.setText("New TableItem");
+		tableItem_3.setText("Hue distractors stage 2");
 		
 		TableItem tableItem_4 = new TableItem(table, SWT.NONE);
-		tableItem_4.setText("New TableItem");
+		tableItem_4.setText("Number distractors stage 1");
 		
 		TableItem tableItem_5 = new TableItem(table, SWT.NONE);
-		tableItem_5.setText("New TableItem");
+		tableItem_5.setText("Number distractors stage 2");
 		
 		TableItem tableItem_6 = new TableItem(table, SWT.NONE);
-		tableItem_6.setText("New TableItem");
+		tableItem_6.setText("Number distractors stage 3");
 		
 		TableItem tableItem_7 = new TableItem(table, SWT.NONE);
-		tableItem_7.setText("New TableItem");
+		tableItem_7.setText("Shape distractors stage 1");
 		
 		TableItem tableItem_8 = new TableItem(table, SWT.NONE);
-		tableItem_8.setText("New TableItem");
+		tableItem_8.setText("Shape distractors stage 2");
 		
 		TableItem tableItem_9 = new TableItem(table, SWT.NONE);
-		tableItem_9.setText("New TableItem");
+		tableItem_9.setText("Shape distractors stage 3");
 		
 		TableItem tableItem_10 = new TableItem(table, SWT.NONE);
-		tableItem_10.setText("New TableItem");
+		tableItem_10.setText("Combined shape / color");
 		
 		TableItem tableItem_11 = new TableItem(table, SWT.NONE);
-		tableItem_11.setText("New TableItem");
+		tableItem_11.setText("Combined number / color");
 		
 		txtPerceptionTestResults = new Text(shell, SWT.BORDER);
 		txtPerceptionTestResults.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
