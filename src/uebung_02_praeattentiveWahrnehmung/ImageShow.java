@@ -25,12 +25,13 @@ public class ImageShow {
 	private Label label;
 	public  ArrayList<TimedImage> infoImages;
 	public  boolean testactive = false;
+	public 	boolean testIsFinsed = false;
 	private int infoImageindex;
 	
 	public  ArrayList<TimedImage> perceptionImages;
 	private int imageindex;
 	private boolean[] perceptionResults;
-	private float[] milisecondsToShow = new float[]{150,400,1000,2500};
+	private float[] milisecondsToShow = new float[]{150,400};
 	private int secondsIndex = 0;
 
 	
@@ -51,7 +52,7 @@ public class ImageShow {
 		this.imageindex = 0;
 		this.infoImageindex =0;
 		createImages(this.display, this.label );
-		perceptionResults = new boolean[perceptionImages.size()];
+		perceptionResults = new boolean[perceptionImages.size()*milisecondsToShow.length];
 	}
 	
 	
@@ -114,8 +115,6 @@ public class ImageShow {
 		if(imageindex >= perceptionImages.size()) {
 			imageindex= 0;		
 			secondsIndex++;
-
-			
 		}
 		
 		testactive = false;
@@ -126,23 +125,31 @@ public class ImageShow {
 	}
 	
 	public void setCurrentTest(boolean testresult) {
-		perceptionResults[imageindex] = testresult;
-		//System.out.print(testresult);
+		perceptionResults[secondsIndex * (perceptionImages.size()-1)+ imageindex] = testresult;
 	}
 	
 	
 	public static void main(String[] args) {
 		
+		Resultwindow resultwindow = null;
+		try {
+			resultwindow = new Resultwindow();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 		
 
 		Display display = Display.getDefault();
 		Shell shell = new Shell();
-		shell.setSize(528, 535);
+		shell.setSize(745, 910);
 		shell.setText("SWT Application");
 		
 		Label label = new Label(shell, SWT.NONE);
+		label.setBounds(10, 10, 700, 700);
 		ImageShow program = new ImageShow(display, label);
-				
+		
 		Button btnSawIt = new Button(shell, SWT.NONE);
 		btnSawIt.addMouseListener(new MouseAdapter() {
 			@Override
@@ -151,11 +158,13 @@ public class ImageShow {
 				program.buttons[0].setVisible(false);
 				program.buttons[1].setVisible(false);
 				program.buttons[2].setVisible(true);
+				if(program.secondsIndex>=program.milisecondsToShow.length)program.testIsFinsed =true;
+
 
 			}
 		});
 		btnSawIt.setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_GREEN));
-		btnSawIt.setBounds(80, 401, 105, 35);
+		btnSawIt.setBounds(80, 750, 105, 35);
 		btnSawIt.setText("Saw it!");
 		
 		Button btnNoChance = new Button(shell, SWT.NONE);
@@ -166,10 +175,12 @@ public class ImageShow {
 				program.buttons[0].setVisible(false);
 				program.buttons[1].setVisible(false);
 				program.buttons[2].setVisible(true);
+				if(program.secondsIndex>=program.milisecondsToShow.length)program.testIsFinsed =true;
+
 			}
 		});
 		btnNoChance.setForeground(SWTResourceManager.getColor(SWT.COLOR_DARK_RED));
-		btnNoChance.setBounds(310, 401, 105, 35);
+		btnNoChance.setBounds(509, 750, 105, 35);
 		btnNoChance.setText("No chance");
 		
 		Button btnNextPerception = new Button(shell, SWT.NONE);
@@ -178,9 +189,10 @@ public class ImageShow {
 			public void mouseDown(MouseEvent e) {
 				program.setToNextInfoImage();
 				program.buttons[2].setVisible(false);
+				
 			}
 		});
-		btnNextPerception.setBounds(185, 350, 136, 35);
+		btnNextPerception.setBounds(290, 750, 136, 35);
 		btnNextPerception.setText("Next Perception");
 		
 		Button[] buttons = new Button[] {btnSawIt,btnNoChance,btnNextPerception};
@@ -191,7 +203,7 @@ public class ImageShow {
 
 		shell.open();
 		shell.layout();
-		while (!shell.isDisposed()) {
+		while (!shell.isDisposed() && !program.testIsFinsed) {
 			
 			
 			if(program.testactive) {
@@ -208,11 +220,14 @@ public class ImageShow {
 				}
 			}
 			
-			
-			 //one.showImage();
 
-			if (!display.readAndDispatch()) {
+			if (!display.readAndDispatch()) {}
+		}
+		
+		if(resultwindow != null) {
+			resultwindow.setResults(program.perceptionResults);
+			resultwindow.open();
 			}
 		}
 	}
-}
+

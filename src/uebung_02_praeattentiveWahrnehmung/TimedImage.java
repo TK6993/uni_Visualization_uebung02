@@ -43,7 +43,7 @@ public class TimedImage {
 
 		if(!isShown) {
 			label.setImage(image);
-			label.setBounds(40, 38, 400, 280);
+			label.setBounds(100, 0, 700, 700);
 			label.redraw();
 			start = System.currentTimeMillis(); 
 			isShown = true;
@@ -58,7 +58,7 @@ public class TimedImage {
 			//If this Image has a timeToShow it will be set to null because the time is up
 			if(timeToShow >= 0) { 
 				label.setImage(null);
-				label.setBounds(40, 38, 400, 280);
+				label.setBounds(100, 0, 700, 700);
 				return false;
 			}
 			return true;
