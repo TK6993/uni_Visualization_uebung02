@@ -60,7 +60,7 @@ public class Resultwindow {
 		shell.setText("SWT Application");
 		
 		table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
-		table.setBounds(10, 106, 826, 204);
+		table.setBounds(10, 106, 826, 390);
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 		
@@ -88,6 +88,33 @@ public class Resultwindow {
 		tableItem_2.setText("New TableItem");
 		
 		TableCursor tableCursor = new TableCursor(table, SWT.NONE);
+		
+		TableItem tableItem_3 = new TableItem(table, SWT.NONE);
+		tableItem_3.setText("New TableItem");
+		
+		TableItem tableItem_4 = new TableItem(table, SWT.NONE);
+		tableItem_4.setText("New TableItem");
+		
+		TableItem tableItem_5 = new TableItem(table, SWT.NONE);
+		tableItem_5.setText("New TableItem");
+		
+		TableItem tableItem_6 = new TableItem(table, SWT.NONE);
+		tableItem_6.setText("New TableItem");
+		
+		TableItem tableItem_7 = new TableItem(table, SWT.NONE);
+		tableItem_7.setText("New TableItem");
+		
+		TableItem tableItem_8 = new TableItem(table, SWT.NONE);
+		tableItem_8.setText("New TableItem");
+		
+		TableItem tableItem_9 = new TableItem(table, SWT.NONE);
+		tableItem_9.setText("New TableItem");
+		
+		TableItem tableItem_10 = new TableItem(table, SWT.NONE);
+		tableItem_10.setText("New TableItem");
+		
+		TableItem tableItem_11 = new TableItem(table, SWT.NONE);
+		tableItem_11.setText("New TableItem");
 		
 		txtPerceptionTestResults = new Text(shell, SWT.BORDER);
 		txtPerceptionTestResults.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));

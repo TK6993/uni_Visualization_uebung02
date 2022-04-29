@@ -58,10 +58,23 @@ public class ImageShow {
 	
 	
 	public  void createImages(Display display, Label label) {
-		TimedImage a = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\sample.png");
-		TimedImage b = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\visualization.png");
-		TimedImage c = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\infographic.png");
+		TimedImage h0 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\h0.jpg");
+		TimedImage dh1 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\dh1.jpg");
+		TimedImage dh2 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\dh2.jpg");
+		TimedImage dh3 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\dh3.jpg");
 
+		TimedImage dn1 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\dn1.jpg");
+		TimedImage dn2 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\dn2.jpg");
+		TimedImage dn3 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\dn3.jpg");
+
+		TimedImage df1 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\df1.jpg");
+		TimedImage df2 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\df2.jpg");
+		TimedImage df3 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\df3.jpg");
+
+		
+		TimedImage c1 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\c1.jpg");
+		TimedImage c2 = new TimedImage(display, label, milisecondsToShow[0], "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\c2.jpg");
+		
 		
 		
 		
@@ -70,9 +83,18 @@ public class ImageShow {
 		TimedImage one = new TimedImage(display, label, 700f, "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\number-1.png");
 		TimedImage go = new TimedImage(display, label, 900f, "C:\\Users\\keoma\\workspace\\uebung_02_praeattentiveWahrnehmung\\img\\go.png");
 
-		perceptionImages.add(a);
-		perceptionImages.add(b);
-		perceptionImages.add(c);
+		perceptionImages.add(h0);
+		perceptionImages.add(dh1);
+		perceptionImages.add(dh2);
+		perceptionImages.add(dh3);
+		perceptionImages.add(dn1);
+		perceptionImages.add(dn2);
+		perceptionImages.add(dn3);
+		perceptionImages.add(df1);
+		perceptionImages.add(df2);
+		perceptionImages.add(df3);
+		perceptionImages.add(c1);
+		perceptionImages.add(c2);
 		
 	
 		
